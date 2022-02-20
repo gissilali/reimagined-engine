@@ -4,7 +4,7 @@
 
 
 $router->get('/', function () use ($router) {
-    return '1.0';
+    return '1.2';
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
