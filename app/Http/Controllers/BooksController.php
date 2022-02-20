@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\APIFailureException;
+use App\Models\Book;
 use App\Services\IceAndFireBooksAPI;
+use App\Transformers\BookTransformer;
 use Illuminate\Support\Facades\Request;
 
 class BooksController extends Controller
@@ -18,12 +20,11 @@ class BooksController extends Controller
     public function index(Request $request)
     {
         try {
-            $this->booksAPI->fetchBooks();
+            return fractal($this->booksAPI->fetchBooks(), new BookTransformer())->toArray()['data'];
         } catch (APIFailureException $e) {
             return response()->json([
                 'message' => 'failed to fetch data'
             ], 500);
         }
-        return [];
     }
 }
