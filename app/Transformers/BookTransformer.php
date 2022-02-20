@@ -8,7 +8,7 @@ use League\Fractal\TransformerAbstract;
 
 class BookTransformer extends TransformerAbstract
 {
-    public function transform(Book $book)
+    public function transform($book)
     {
         return [
             'isbn' => $book->isbn,

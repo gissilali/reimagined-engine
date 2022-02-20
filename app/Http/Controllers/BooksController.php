@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\APIFailureException;
 use App\Models\Book;
-use App\Services\IceAndFireBooksAPI;
+use App\Services\IceAndFireBooksService;
 use App\Transformers\BookTransformer;
 use Illuminate\Support\Facades\Request;
 
@@ -12,7 +12,7 @@ class BooksController extends Controller
 {
     private $booksAPI;
 
-    public function __construct(IceAndFireBooksAPI $booksAPI)
+    public function __construct(IceAndFireBooksService $booksAPI)
     {
         $this->booksAPI = $booksAPI;
     }
